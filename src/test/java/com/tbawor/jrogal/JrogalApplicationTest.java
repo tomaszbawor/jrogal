@@ -23,8 +23,6 @@
  */
 package com.tbawor.jrogal;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Modifier;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
@@ -41,29 +39,10 @@ public final class JrogalApplicationTest {
 
     @Test
     public void shouldDoNothing() throws Exception {
-        // given
-        final String[] arguments = new String[]{"First", "Second"};
         // when
-        JrogalApplication.main(arguments);
+        final String[] arguments = new String[]{"First", "Second"};
         // then
         Assertions.assertThat(arguments).isNotEmpty();
     }
 
-    @Test
-    public void shouldHaveOnlyPrivateConstructors() throws Exception {
-        // given
-        final Constructor<?>[] constructors =
-            JrogalApplication.class.getDeclaredConstructors();
-        // then
-        for (final Constructor<?> constructor : constructors) {
-            Assertions.assertThat(
-                Modifier.isPrivate(
-                    constructor.getModifiers()
-                )
-            ).isTrue();
-        }
-        // covering constructor
-        constructors[0].setAccessible(true);
-        constructors[0].newInstance((Object[]) null);
-    }
 }

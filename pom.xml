@@ -68,8 +68,18 @@
                     </execution>
                 </executions>
             </plugin>
-        </plugins>
 
+            <!--JAVA FX -->
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.1.3</version>
+                <configuration>
+                    <mainClass>com.tbawor.jrogal.JrogalApplication</mainClass>
+                </configuration>
+            </plugin>
+
+        </plugins>
     </build>
 
 </project>

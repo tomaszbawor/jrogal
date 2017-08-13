@@ -23,6 +23,11 @@
  */
 package com.tbawor.jrogal;
 
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
 /**
  * Main class of JRogal Application with entry point to application.
  *
@@ -30,19 +35,36 @@ package com.tbawor.jrogal;
  * @version $Id$
  * @since 0.0.1
  */
-public final class JrogalApplication {
+public final class JrogalApplication extends Application {
 
     /**
-     * Private constructor.
+     * Width of main window.
      */
-    private JrogalApplication() {
-    }
+    private static final int WIDTH = 300;
+
+    /**
+     * Height of main window.
+     */
+    private static final int HEIGHT = 500;
 
     /**
      * Main method.
      * @param args Command line arguments
      */
     public static void main(final String... args) {
-        // Starting point of application
+        launch(args);
+    }
+
+    @Override
+    public void start(final Stage stage) throws Exception {
+        final StackPane root = new StackPane();
+        final Scene scene = new Scene(
+            root,
+            JrogalApplication.WIDTH,
+            JrogalApplication.HEIGHT
+        );
+        stage.setTitle("Hello World");
+        stage.setScene(scene);
+        stage.show();
     }
 }
