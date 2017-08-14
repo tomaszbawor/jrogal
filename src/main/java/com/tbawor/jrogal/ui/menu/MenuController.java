@@ -23,7 +23,7 @@
  */
 package com.tbawor.jrogal.ui.menu;
 
-import javafx.fxml.FXML;
+import javafx.application.Platform;
 
 /**
  * Controller for application main menu.
@@ -37,9 +37,8 @@ public final class MenuController {
      * Function executed when Exit button pressed in main menu.
      * @checkstyle NonStaticMethodCheck (3 lines)
      */
-    @FXML
     public void onExitClicked() {
-        // action to do on exit clicked
+        Platform.exit();
     }
 
 }
