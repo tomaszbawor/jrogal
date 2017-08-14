@@ -21,32 +21,49 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.tbawor.jrogal.ui.menu;
-
-import javafx.application.Platform;
+package com.tbawor.jrogal.game.hero;
 
 /**
- * Controller for application main menu.
+ * Statistics of hero.
  * @author Tomasz Bawor (bawortomasz@gmail.com)
  * @version $Id$
  * @since 0.0.1
  */
-public final class MenuController {
+final class Statistics {
 
     /**
-     * Function executed when Start button is pressed in main menu.
-     * @checkstyle NonStaticMethodCheck (3 lines)
+     * Hero Attack value.
      */
-    public void onStartClicked() {
-        //todo implement
+    private final int attack;
+
+    /**
+     * Hero Defence value.
+     */
+    private final int defence;
+
+    /**
+     * Constructor for creating statistics.
+     * @param attack Attack int value
+     * @param defence Defence int value
+     */
+    Statistics(final int attack, final int defence) {
+        this.attack = attack;
+        this.defence = defence;
     }
 
     /**
-     * Function executed when Exit button pressed in main menu.
-     * @checkstyle NonStaticMethodCheck (3 lines)
+     * Method returning attack value.
+     * @return Attack value
      */
-    public void onExitClicked() {
-        Platform.exit();
+    public int getAttack() {
+        return this.attack;
     }
 
+    /**
+     * Mehtod returning defence value.
+     * @return Defence value
+     */
+    public int getDefence() {
+        return this.defence;
+    }
 }

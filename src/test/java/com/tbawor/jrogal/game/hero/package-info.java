@@ -21,32 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.tbawor.jrogal.ui.menu;
-
-import javafx.application.Platform;
 
 /**
- * Controller for application main menu.
- * @author Tomasz Bawor (bawortomasz@gmail.com)
- * @version $Id$
- * @since 0.0.1
+ * All tests for hero correlated classes in game.
  */
-public final class MenuController {
-
-    /**
-     * Function executed when Start button is pressed in main menu.
-     * @checkstyle NonStaticMethodCheck (3 lines)
-     */
-    public void onStartClicked() {
-        //todo implement
-    }
-
-    /**
-     * Function executed when Exit button pressed in main menu.
-     * @checkstyle NonStaticMethodCheck (3 lines)
-     */
-    public void onExitClicked() {
-        Platform.exit();
-    }
-
-}
+package com.tbawor.jrogal.game.hero;
