@@ -21,41 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.tbawor.jrogal;
-
-import java.net.URL;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 /**
- * Main class of JRogal Application with entry point to application.
- *
- * @author Tomasz Bawor (bawortomasz@gmail.com)
- * @version $Id$
- * @since 0.0.1
+ * Package containing all classes connected to main menu.
  */
-public final class JrogalApplication extends Application {
-    /**
-     * Main method.
-     * @param args Command line arguments
-     */
-    public static void main(final String... args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(final Stage stage) throws Exception {
-        final URL resource = getClass()
-            .getResource(
-                "ui/menu/menu.fxml"
-            );
-        final Parent root = FXMLLoader.load(resource);
-        final Scene scene = new Scene(root);
-        stage.setTitle("Hello World");
-        stage.setScene(scene);
-        stage.show();
-    }
-}
+package com.tbawor.jrogal.ui.menu;
