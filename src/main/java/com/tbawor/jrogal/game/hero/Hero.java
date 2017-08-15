@@ -52,7 +52,7 @@ public class Hero {
     }
 
     /**
-     * Method for getting hero getName.
+     * Method for getting hero name.
      * @return Hero getName
      */
     public final String getName() {
