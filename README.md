@@ -8,4 +8,4 @@ Java Roguelike.
 Installation
 ------------
 To instal simply execute
-`./mvnw jfx:jar`, and you will build jar file into target directory.
+`./mvnw jfx:jar`, and you will build jar file into `target/jfx/app` directory.
