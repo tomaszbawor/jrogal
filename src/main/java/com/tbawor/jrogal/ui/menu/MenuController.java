@@ -23,7 +23,15 @@
  */
 package com.tbawor.jrogal.ui.menu;
 
+import java.io.IOException;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 /**
  * Controller for application main menu.
@@ -34,11 +42,25 @@ import javafx.application.Platform;
 public final class MenuController {
 
     /**
+     * Reference to start button.
+     * @checkstyle MemberNameCheck (3 line)
+     */
+    @FXML
+    private Button startButton;
+
+    /**
      * Function executed when Start button is pressed in main menu.
+     * @throws IOException when invalid fxml url provided.
      * @checkstyle NonStaticMethodCheck (3 lines)
      */
-    public void onStartClicked() {
-        //todo implement
+    public void onStartClicked() throws IOException {
+        final Parent root = FXMLLoader
+            .load(
+                getClass()
+                    .getResource("../creator/creator.fxml")
+            );
+        final Scene scene = new Scene(root);
+        this.setNewScene(scene);
     }
 
     /**
@@ -47,6 +69,18 @@ public final class MenuController {
      */
     public void onExitClicked() {
         Platform.exit();
+    }
+
+    /**
+     * Sets new javafx scene.
+     * @param scene New scene object
+     */
+    private void setNewScene(final Scene scene) {
+        final Window window = this.startButton.getScene().getWindow();
+        if (window instanceof Stage) {
+            final Stage stage = (Stage) window;
+            stage.setScene(scene);
+        }
     }
 
 }
