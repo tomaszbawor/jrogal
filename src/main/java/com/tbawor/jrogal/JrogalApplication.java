@@ -29,6 +29,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * Main class of JRogal Application with entry point to application.
@@ -54,6 +55,7 @@ public final class JrogalApplication extends Application {
             );
         final Parent root = FXMLLoader.load(resource);
         final Scene scene = new Scene(root);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Hello World");
         stage.setScene(scene);
         stage.show();
