@@ -133,9 +133,9 @@ public class PlayerCreator implements Initializable {
      * Function adding callback to update remaining points indicator.
      */
     private void initRemainingPointsChanger() {
-        final int spend = this.strengthValue() + this.defenceValue();
         final ChangeListener<? super Number> updater =
             (observable, old, value) -> {
+                final int spend = this.strengthValue() + this.defenceValue();
                 this.pointsToSpend.setText(
                     String.valueOf(PlayerCreator.POINTS_TO_SPEND - spend)
                 );
