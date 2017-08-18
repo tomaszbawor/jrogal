@@ -26,55 +26,33 @@ package com.tbawor.jrogal.game.hero;
 import java.util.Objects;
 
 /**
- * Class representing hero that we will be playing in game.
+ * Value object for Hero name.
+ *
  * @author Tomasz Bawor (bawortomasz@gmail.com)
  * @version $Id$
  * @since 0.0.1
  */
-public class Hero {
+final class HeroName {
 
     /**
-     * Name of a hero.
+     * String value of HeroName.
      */
-    private final HeroName name;
+    private final String value;
 
     /**
-     * Hero statistics.
+     * Constructor of HeroName.
+     * @param value HeroName value object.
      */
-    private final Statistics statistics;
-
-    /**
-     * Constructor of hero.
-     * @param name Name of a hero
-     * @param statistics Statistic of a Hero
-     */
-    public Hero(final String name, final Statistics statistics) {
-        this.name = new HeroName(name);
-        this.statistics = Objects.requireNonNull(statistics);
+    HeroName(final String value) {
+        this.value = Objects.requireNonNull(value);
     }
 
     /**
-     * Method for getting hero name.
-     * @return Hero getName
+     * Method for returning String representation of HeroName.
+     * @return HeroName String representation .
      */
-    public final String getName() {
-        return this.name.asString();
-    }
-
-    /**
-     * Method for getting hero attack.
-     * @return Hero attack value
-     */
-    public final int attack() {
-        return this.statistics.getAttack();
-    }
-
-    /**
-     * Mehtod for getting hero defence.
-     * @return Hero defence value
-     */
-    public final int defence() {
-        return this.statistics.getDefence();
+    public String asString() {
+        return this.value;
     }
 
 }

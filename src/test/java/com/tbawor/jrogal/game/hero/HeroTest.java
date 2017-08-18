@@ -23,58 +23,63 @@
  */
 package com.tbawor.jrogal.game.hero;
 
-import java.util.Objects;
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
 
 /**
- * Class representing hero that we will be playing in game.
+ * Test for hero class.
+ *
  * @author Tomasz Bawor (bawortomasz@gmail.com)
  * @version $Id$
  * @since 0.0.1
+ * @checkstyle MethodBodyComments (500 lines)
+ * @checkstyle JavadocMethodCheck (500 lines)
  */
-public class Hero {
+public class HeroTest {
 
     /**
-     * Name of a hero.
+     * Value for stub of hero statistics.
      */
-    private final HeroName name;
+    private static final int STAT_ATTACK = 10;
 
     /**
-     * Hero statistics.
+     * Value for stub of hero statistics.
      */
-    private final Statistics statistics;
+    private static final int STAT_DEFENCE = 20;
 
     /**
-     * Constructor of hero.
-     * @param name Name of a hero
-     * @param statistics Statistic of a Hero
+     * Mock for statistics.
      */
-    public Hero(final String name, final Statistics statistics) {
-        this.name = new HeroName(name);
-        this.statistics = Objects.requireNonNull(statistics);
+    private final Statistics statistics = new Statistics(
+        HeroTest.STAT_ATTACK,
+        HeroTest.STAT_DEFENCE
+    );
+
+    @Test(expected = NullPointerException.class)
+    public final void shouldThrowExceptionWhenNullNameProvided() {
+        // given
+        final String name = null;
+        // when
+        new Hero(name, this.statistics);
     }
 
-    /**
-     * Method for getting hero name.
-     * @return Hero getName
-     */
-    public final String getName() {
-        return this.name.asString();
+    @Test(expected = NullPointerException.class)
+    public final void shouldThrowExceptionWhenNullStatisticsProvided() {
+        // given
+        final Statistics statistic = null;
+        final String name = "Name";
+        // when
+        new Hero(name, statistic);
     }
 
-    /**
-     * Method for getting hero attack.
-     * @return Hero attack value
-     */
-    public final int attack() {
-        return this.statistics.getAttack();
-    }
-
-    /**
-     * Mehtod for getting hero defence.
-     * @return Hero defence value
-     */
-    public final int defence() {
-        return this.statistics.getDefence();
+    @Test
+    public final void shouldBeInitializedWithValidName() {
+        // given
+        final String name = "ValidName";
+        // when
+        final Hero hero = new Hero(name, this.statistics);
+        // then
+        Assertions.assertThat(hero.getName()).isEqualTo(name);
     }
 
 }
