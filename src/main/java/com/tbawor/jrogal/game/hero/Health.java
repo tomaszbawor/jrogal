@@ -26,69 +26,56 @@ package com.tbawor.jrogal.game.hero;
 import java.util.Objects;
 
 /**
- * Class representing hero that we will be playing in game.
+ * Hero health representation.
  * @author Tomasz Bawor (bawortomasz@gmail.com)
  * @version $Id$
  * @since 0.0.1
  */
-public class Hero {
+class Health {
 
     /**
-     * Name of a hero.
+     * Maximum health value.
      */
-    private final HeroName name;
+    private final int maximum;
 
     /**
-     * Hero statistics.
+     * Current health value.
      */
-    private final Statistics statistics;
+    private final int value;
 
     /**
-     * Hero health.
+     * Constructing Health from Statistics.
+     * @param statistics Input statistics for health
      */
-    private final Health health;
-
-    /**
-     * Constructor of hero.
-     * @param name Name of a hero
-     * @param statistics Statistic of a Hero
-     */
-    public Hero(final String name, final Statistics statistics) {
-        this.name = new HeroName(name);
-        this.statistics = Objects.requireNonNull(statistics);
-        this.health = new Health(statistics);
+    Health(final Statistics statistics) {
+        this.maximum = getHealthFromStats(statistics);
+        this.value = this.maximum;
     }
 
     /**
-     * Method for getting hero name.
-     * @return Hero getName
+     * Gets maximum health value.
+     * @return Maximum health value
      */
-    public final String getName() {
-        return this.name.asString();
+    public int getMaximumHealth() {
+        return this.maximum;
     }
 
     /**
-     * Method for getting hero attack.
-     * @return Hero attack value
+     * Gets value of health.
+     * @return Current health value
      */
-    public final int attack() {
-        return this.statistics.getAttack();
+    public int getCurrentValue() {
+        return this.value;
     }
 
     /**
-     * Mehtod for getting hero defence.
-     * @return Hero defence value
+     * Method extracting initial health value from statistics.
+     * @param statistics Input statistics
+     * @return Health value
      */
-    public final int defence() {
-        return this.statistics.getDefence();
-    }
-
-    /**
-     * Method for returning Health of Hero.
-     * @return Hero Health
-     */
-    public final Health currentHealth() {
-        return this.health;
+    private static int getHealthFromStats(final Statistics statistics) {
+        Objects.requireNonNull(statistics);
+        return statistics.getDefence() * 2;
     }
 
 }
