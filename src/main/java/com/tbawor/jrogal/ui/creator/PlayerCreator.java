@@ -145,7 +145,7 @@ public class PlayerCreator implements Initializable {
     }
 
     /**
-     * Function reading slider defence value.
+     * Function reading defence slider  value.
      * @return Defence int value
      */
     private int defenceValue() {
@@ -153,7 +153,7 @@ public class PlayerCreator implements Initializable {
     }
 
     /**
-     * Function reading slider strength value.
+     * Function reading strength slider value.
      * @return Strength int value
      */
     private int strengthValue() {
