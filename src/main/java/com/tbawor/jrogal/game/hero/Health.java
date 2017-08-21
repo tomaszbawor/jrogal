@@ -48,8 +48,25 @@ class Health {
      * @param statistics Input statistics for health
      */
     Health(final Statistics statistics) {
-        this.maximum = getHealthFromStats(statistics);
-        this.value = this.maximum;
+        this(getHealthFromStats(statistics));
+    }
+
+    /**
+     * Constructing health from maximum value.
+     * @param health Health value
+     */
+    private Health(final int health) {
+        this(health, health);
+    }
+
+    /**
+     * Constucor for health.
+     * @param maximum Maximum health value
+     * @param value Current health value
+     */
+    Health(final int maximum, final int value) {
+        this.maximum = maximum;
+        this.value = value;
     }
 
     /**
@@ -69,6 +86,15 @@ class Health {
     }
 
     /**
+     * Function inflicting damage to heart.
+     * @param damage Damage inflicted
+     * @return Health with updated values;
+     */
+    public Health damage(final int damage) {
+        return new Health(this.maximum, this.value - damage);
+    }
+
+    /**
      * Method extracting initial health value from statistics.
      * @param statistics Input statistics
      * @return Health value
@@ -77,5 +103,4 @@ class Health {
         Objects.requireNonNull(statistics);
         return statistics.getDefence() * 2;
     }
-
 }
