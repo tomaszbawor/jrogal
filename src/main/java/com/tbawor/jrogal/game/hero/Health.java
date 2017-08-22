@@ -91,7 +91,28 @@ class Health {
      * @return Health with updated values;
      */
     public Health damage(final int damage) {
-        return new Health(this.maximum, this.value - damage);
+        final int current;
+        if (this.value - damage < 0) {
+            current = 0;
+        } else {
+            current = this.value - damage;
+        }
+        return new Health(this.maximum, current);
+    }
+
+    /**
+     * Function healing damage.
+     * @param healing Health healed
+     * @return Health object with updated values.
+     */
+    public Health heal(final int healing) {
+        final int current;
+        if (this.value + healing < this.maximum) {
+            current = this.value + healing;
+        } else {
+            current = this.maximum;
+        }
+        return new Health(this.maximum, current);
     }
 
     /**

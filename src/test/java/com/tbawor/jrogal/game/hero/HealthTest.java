@@ -77,4 +77,34 @@ public class HealthTest {
             .isEqualTo(health.getCurrentValue() - damage);
     }
 
+    @Test
+    public final void shouldNotBeDamagedBeyondZero() {
+        // given
+        final int damage = 10;
+        final int defence = 1;
+        final Health health = new Health(
+            new Statistics(
+                HealthTest.ATTACK_VALUE,
+                defence
+            )
+        );
+        // when
+        final Health damaged = health.damage(damage);
+        // then
+        Assertions.assertThat(damaged.getCurrentValue()).isZero();
+    }
+
+    @Test
+    public final void shouldNotHealBeyondMaximumValue() {
+        // given
+        final int healing = 10;
+        final Health health = new Health(HealthTest.MOCK_STATISTICS);
+        // when
+        final Health healed = health.heal(healing);
+        // then
+        Assertions
+            .assertThat(healed.getCurrentValue())
+            .isLessThanOrEqualTo(healed.getMaximumHealth());
+    }
+
 }
