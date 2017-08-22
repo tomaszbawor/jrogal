@@ -23,14 +23,20 @@
  */
 package com.tbawor.jrogal.ui.creator;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 /**
  * Controller for Player creator scene.
@@ -38,7 +44,7 @@ import javafx.scene.control.TextField;
  * @version $Id$
  * @since 0.0.1
  */
-public class CreatorController implements Initializable {
+public  class CreatorController implements Initializable {
 
     /**
      * Starting skillpoints to redistribute.
@@ -86,13 +92,30 @@ public class CreatorController implements Initializable {
     }
 
     /**
-     * Method binded to start button click.
+     * Method binded to start game button click.
+     * @throws IOException when no fxml found.
      */
     @FXML
-    public final void startGame() {
-        this.pointsToSpend.setText(
-            String.format("Welcome %s!", this.inputName.getText())
-        );
+    public final void startGame() throws IOException {
+        final Parent root = FXMLLoader
+            .load(
+                CreatorController.class
+                    .getResource("../board/board.fxml")
+                );
+        final Scene scene = new Scene(root);
+        this.setNewScene(scene);
+    }
+
+    /**
+     * Sets new javafx scene.
+     * @param scene New scene object
+     */
+    private void setNewScene(final Scene scene) {
+        final Window window = this.inputName.getScene().getWindow();
+        if (window instanceof Stage) {
+            final Stage stage = (Stage) window;
+            stage.setScene(scene);
+        }
     }
 
     /**
