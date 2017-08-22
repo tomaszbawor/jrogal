@@ -33,12 +33,12 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
 /**
- * Controller for PlayerCreator scene.
+ * Controller for Player creator scene.
  * @author Tomasz Bawor (bawortomasz@gmail.com)
  * @version $Id$
  * @since 0.0.1
  */
-public class PlayerCreator implements Initializable {
+public class CreatorController implements Initializable {
 
     /**
      * Starting skillpoints to redistribute.
@@ -78,7 +78,7 @@ public class PlayerCreator implements Initializable {
         final ResourceBundle resources) {
         this.pointsToSpend
             .setText(
-                String.valueOf(PlayerCreator.POINTS_TO_SPEND)
+                String.valueOf(CreatorController.POINTS_TO_SPEND)
         );
         this.initDefenceNormalization();
         this.initStrengthNormalization();
@@ -103,9 +103,9 @@ public class PlayerCreator implements Initializable {
             (observable, old, current) -> {
                 final double strength = this.strengthSlider.getValue();
                 final double spend = strength + current.doubleValue();
-                if (spend > PlayerCreator.POINTS_TO_SPEND) {
+                if (spend > CreatorController.POINTS_TO_SPEND) {
                     this.strengthSlider.setValue(
-                        PlayerCreator.POINTS_TO_SPEND - current.intValue()
+                        CreatorController.POINTS_TO_SPEND - current.intValue()
                     );
                 }
             }
@@ -120,9 +120,9 @@ public class PlayerCreator implements Initializable {
             (observable, old, current) -> {
                 final double defence = this.defenceSlider.getValue();
                 final double used = defence + current.doubleValue();
-                if (used > PlayerCreator.POINTS_TO_SPEND) {
+                if (used > CreatorController.POINTS_TO_SPEND) {
                     this.defenceSlider.setValue(
-                        PlayerCreator.POINTS_TO_SPEND - current.intValue()
+                        CreatorController.POINTS_TO_SPEND - current.intValue()
                     );
                 }
             }
@@ -137,7 +137,7 @@ public class PlayerCreator implements Initializable {
             (observable, old, value) -> {
                 final int spend = this.strengthValue() + this.defenceValue();
                 this.pointsToSpend.setText(
-                    String.valueOf(PlayerCreator.POINTS_TO_SPEND - spend)
+                    String.valueOf(CreatorController.POINTS_TO_SPEND - spend)
                 );
             };
         this.strengthSlider.valueProperty().addListener(updater);
