@@ -35,7 +35,7 @@
                   <Font size="15.0" />
                </font></Label>
             <Slider fx:id="strengthSlider" blockIncrement="1.0" majorTickUnit="5.0" max="20.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Slider fx:id="defenceSlider" blockIncrement="1.0" majorTickUnit="5.0" max="20.0" minorTickCount="1" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Slider fx:id="defenceSlider" blockIncrement="1.0" majorTickUnit="5.0" max="20.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Strength:" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="20.0" />
