@@ -34,7 +34,7 @@ public enum  Tile {
     /**
      * Floor tile.
      */
-    FLORR,
+    FLOOR,
 
     /**
      * Wall tile.

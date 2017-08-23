@@ -68,7 +68,7 @@ public class GameLevel {
         final Tile[][] tiles = new Tile[width][height];
         for (int xpos = 0; xpos < width; xpos = xpos + 1) {
             for (int ypos = 0; ypos < height; ypos = ypos + 1) {
-                tiles[xpos][ypos] = Tile.FLORR;
+                tiles[xpos][ypos] = Tile.FLOOR;
             }
         }
         return tiles;
