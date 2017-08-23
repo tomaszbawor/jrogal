@@ -3,9 +3,8 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane  fx:controller="com.tbawor.jrogal.ui.board.BoardController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tbawor.jrogal.ui.board.BoardController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"  >
    <children>
-      <Canvas fx:id="map" height="300.0" layoutX="15.0" layoutY="15.0" width="300.0" />
+      <Canvas fx:id="map" onKeyPressed="#handleKey" height="320.0" layoutX="15.0" layoutY="15.0" width="320.0" />
    </children>
 </Pane>

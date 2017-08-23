@@ -28,7 +28,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 /**
  * Controller for Game board scene.
@@ -47,9 +48,20 @@ public class BoardController implements Initializable {
     @Override
     public final void initialize(final URL location,
         final ResourceBundle resources) {
-        final GraphicsContext context = this.map.getGraphicsContext2D();
-        final double position = 10.0d;
-        context.fillText("Hello :)", position, position);
-        context.save();
+        this.map.setFocusTraversable(true);
+    }
+
+    /**
+     * Method for handling arrow keys for moving on map.
+     * @param event Key pressed event
+     */
+    @FXML
+    public final void handleKey(final KeyEvent event) {
+        final KeyCode code = event.getCode();
+        if (code.isArrowKey()) {
+            final double position = 10.0d;
+            this.map.getGraphicsContext2D()
+                .fillText("Arrow Pressed", position, position);
+        }
     }
 }
