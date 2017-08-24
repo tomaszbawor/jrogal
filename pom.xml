@@ -61,6 +61,9 @@
                 <version>0.17.1</version>
                 <configuration>
                     <license>file:${basedir}/LICENSE.txt</license>
+                    <excludes  combine.children="append">
+                        <exclude>checkstyle:/src/main/resources/.*</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
