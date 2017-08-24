@@ -21,29 +21,51 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.tbawor.jrogal.game.map;
+package com.tbawor.jrogal.ui.board;
+
+import javafx.scene.image.Image;
 
 /**
- * Map tile .
+ * Controller for Game board scene.
  * @author Tomasz Bawor (bawortomasz@gmail.com)
  * @version $Id$
  * @since 0.0.1
  */
-public enum  Tile {
+public enum BoardTile {
 
     /**
-     * Floor tile.
+     * Floor tile, currently grass.
      */
-    FLOOR,
+    FLOOR("/tiles/grass.jpg"),
 
     /**
      * Wall tile.
      */
-    WALL,
+    WALL("/tiles/brickwall.png"),
 
     /**
      * Door tile.
      */
-    DOOR
+    DOOR("/tiles/door.jpg");
 
+    /**
+     * Tile image to display.
+     */
+    private final Image image;
+
+    /**
+     * Constructor for enum.
+     * @param url Url to tile image
+     */
+    BoardTile(final String url) {
+        this.image = new Image(getClass().getResource(url).toString());
+    }
+
+    /**
+     * Getter for Image object for proper tile.
+     * @return Image of tile
+     */
+    public Image getImage() {
+        return this.image;
+    }
 }

@@ -23,6 +23,8 @@
  */
 package com.tbawor.jrogal.game.map;
 
+import com.tbawor.jrogal.ui.board.BoardTile;
+
 /**
  * Game level map.
  * @author Tomasz Bawor (bawortomasz@gmail.com)
@@ -34,14 +36,14 @@ public class GameLevel {
     /**
      * Two dimensional map of tiles.
      */
-    private final Tile[][] tiles;
+    private final BoardTile[][] tiles;
 
     /**
      * Default constructor.
      * @param width Width of the map
      * @param height Height of the map
      */
-    GameLevel(final int width, final int height) {
+    public GameLevel(final int width, final int height) {
         this.tiles = initializeEmptyTiles(width, height);
     }
 
@@ -51,7 +53,7 @@ public class GameLevel {
      * @param ypos Y position.
      * @return Tile at given position.
      */
-    public final Tile getTile(final int xpos, final int ypos) {
+    public final BoardTile getTile(final int xpos, final int ypos) {
         return this.tiles[xpos][ypos];
     }
 
@@ -61,15 +63,38 @@ public class GameLevel {
      * @param height Height of the map
      * @return Two dimensional array of map tiles
      */
-    private static Tile[][] initializeEmptyTiles(
+    private static BoardTile[][] initializeEmptyTiles(
         final int width,
         final int height
     ) {
-        final Tile[][] tiles = new Tile[width][height];
+        final BoardTile[][] tiles = new BoardTile[width][height];
         for (int xpos = 0; xpos < width; xpos = xpos + 1) {
             for (int ypos = 0; ypos < height; ypos = ypos + 1) {
-                tiles[xpos][ypos] = Tile.FLOOR;
+                tiles[xpos][ypos] = BoardTile.FLOOR;
             }
+        }
+        return setWallOnBorders(tiles, width, height);
+    }
+
+    /**
+     * Filling borders with wall tiles.
+     * @param tiles Array of level tiles.
+     * @param width Map width
+     * @param height Map height
+     * @return Two dimensional array of tiles
+     */
+    private static BoardTile[][] setWallOnBorders(
+        final BoardTile[][] tiles,
+        final int width,
+        final int height
+    ) {
+        for (int xpos = 0; xpos < width; xpos = xpos + 1) {
+            tiles[xpos][0] = BoardTile.WALL;
+            tiles[xpos][width - 1] = BoardTile.WALL;
+        }
+        for (int ypos = 0; ypos < height; ypos = ypos + 1) {
+            tiles[0][ypos] = BoardTile.WALL;
+            tiles[height - 1][ypos] = BoardTile.WALL;
         }
         return tiles;
     }

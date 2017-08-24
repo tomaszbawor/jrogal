@@ -23,6 +23,7 @@
  */
 package com.tbawor.jrogal.ui.board;
 
+import com.tbawor.jrogal.game.map.GameLevel;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -40,6 +41,16 @@ import javafx.scene.input.KeyEvent;
 public class BoardController implements Initializable {
 
     /**
+     * Map width in tiles.
+     */
+    private static final int MAP_WIDTH_TILES = 10;
+
+    /**
+     * Map height it tiles.
+     */
+    private static final int MAP_HEIGHT_TILES = 10;
+
+    /**
      * Canvas representing game map.
      */
     @FXML
@@ -49,6 +60,12 @@ public class BoardController implements Initializable {
     public final void initialize(final URL location,
         final ResourceBundle resources) {
         this.map.setFocusTraversable(true);
+        final GameLevel level = new GameLevel(
+            BoardController.MAP_WIDTH_TILES,
+            BoardController.MAP_HEIGHT_TILES
+        );
+        final MapRenderer renderer = new MapRenderer(level, this.map);
+        renderer.render();
     }
 
     /**
