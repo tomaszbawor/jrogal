@@ -36,12 +36,12 @@ public enum BoardTile {
     /**
      * Floor tile, currently grass.
      */
-    FLOOR("/tiles/grass.jpg"),
+    FLOOR("/tiles/grass/grass0.png"),
 
     /**
      * Wall tile.
      */
-    WALL("/tiles/brickwall.png"),
+    WALL("/tiles/walls/brick_brown0.png"),
 
     /**
      * Door tile.
